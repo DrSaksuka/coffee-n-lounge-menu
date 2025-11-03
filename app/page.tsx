@@ -1,65 +1,123 @@
+// app/page.tsx (RENK PALETİ GÜNCELLENMİŞ VE TÜM HATALAR DÜZELTİLMİŞ)
+
+"use client";
+
+import { useState } from "react";
+import { menuData } from "@/data/menuData";
+import type { MenuCategory } from "@/data/menuData";
 import Image from "next/image";
 
 export default function Home() {
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const getCategoryDetails = (): MenuCategory | undefined => {
+    if (!selectedCategory) return undefined;
+    // DÜZELTME BURADA: 'selectedVategory' -> 'selectedCategory' yapıldı
+    return menuData.find(cat => cat.categoryName === selectedCategory);
+  };
+
+  const categoryDetails = getCategoryDetails();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    // Ana arka plan (bg-gray-900) davetiye ile uyumlu, kalabilir
+    <main className="min-h-screen bg-gray-900 text-white p-4 py-12 md:p-12 flex flex-col items-center">
+
+      <header className="text-center mb-8">
+        {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 (Daha yumuşak, bej-altın) */}
+        <h1 className="text-5xl font-bold text-amber-300 mb-2">
+          Coffee!N Launge
+        </h1>
+        <p className="text-xl text-gray-300">Menü</p>
+      </header>
+
+      {/* Ana kutu (bg-gray-800) uyumlu, kalabilir */}
+      <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-2xl p-6 md:p-8">
+
+        {/* --- BÖLİM 1: KATEGORİ LİSTESİ --- */}
+        {selectedCategory === null && (
+          <div>
+            {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 (Daha sıcak bir altın) */}
+            <h2 className="text-2xl font-semibold text-center text-amber-400 mb-6">
+              Kategoriler
+            </h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+
+              {menuData.map((category) => (
+
+                category.imagePath ? (
+                  // Resimli Kart
+                  <button
+                    key={category.categoryName}
+                    onClick={() => setSelectedCategory(category.categoryName)}
+                    // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
+                    className="bg-gray-700 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  >
+                    <div className="relative w-full h-40">
+                      <Image
+                        src={category.imagePath}
+                        alt={category.categoryName}
+                        fill={true}
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+
+                    <div className="p-4">
+                      {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
+                      <h3 className="text-lg font-semibold text-center text-gray-100 group-hover:text-amber-300">
+                        {category.categoryName}
+                      </h3>
+                    </div>
+                  </button>
+                ) : (
+                  // Resimsiz Kart
+                  <button
+                    key={category.categoryName}
+                    onClick={() => setSelectedCategory(category.categoryName)}
+                    // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
+                    className="bg-gray-700 rounded-lg shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500 flex items-center justify-center p-4 h-full min-h-[14rem]"
+                  >
+                    {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
+                    <h3 className="text-lg font-semibold text-center text-gray-100 group-hover:text-amber-300">
+                      {category.categoryName}
+                    </h3>
+                  </button>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* --- BÖLÜM 2: ÜRÜN LİSTESİ --- */}
+        {selectedCategory !== null && categoryDetails && (
+          <div>
+            {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 | hover:text-yellow-300 -> hover:text-amber-200 */}
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="text-amber-300 hover:text-amber-200 mb-4 font-medium"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              &larr; Tüm Kategoriler
+            </button>
+
+            {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 */}
+            <h2 className="text-3xl font-bold text-amber-400 mb-6 border-b border-gray-700 pb-3">
+              {categoryDetails.categoryName}
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+              {categoryDetails.items.map((item) => (
+                <div key={item.name} className="bg-gray-700 p-3 rounded-md">
+                  <h3 className="text-lg font-medium text-gray-100">
+                    {item.name}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
   );
 }
