@@ -205,6 +205,7 @@ export const menuData: MenuCategory[] = [
             { name: "İnferno" },
             { name: "Love 66" },
             { name: "Lady Killer" },
+            { name: "Del Pierro" },
             { name: "İzmir Romantik" },
             { name: "Absalito Zero" },
             { name: "İsabız Nane" },

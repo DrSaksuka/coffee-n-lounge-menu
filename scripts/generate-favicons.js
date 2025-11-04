@@ -17,7 +17,10 @@ Note: On Windows, installing `sharp` may require build tools; the package usuall
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
-const pngToIco = require('png-to-ico');
+// `png-to-ico` may export the function as the module export or under `.default` depending on
+// how Node resolves the package (CJS vs ESM). Normalize to a callable function.
+let pngToIcoMod = require('png-to-ico');
+const pngToIco = typeof pngToIcoMod === 'function' ? pngToIcoMod : (pngToIcoMod && pngToIcoMod.default) ? pngToIcoMod.default : pngToIcoMod;
 
 async function generate(srcPath) {
     if (!srcPath) {
