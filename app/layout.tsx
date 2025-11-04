@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Coffee!N Launge",
   description: "Coffee!N Lounge menu — Coffee & drinks",
+  icons: {
+    icon: '/n-logo.png',
+    shortcut: '/n-logo.png',
+    apple: '/n-logo.png',
+  },
 };
 
 export default function RootLayout({
