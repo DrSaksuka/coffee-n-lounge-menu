@@ -1,24 +1,13 @@
 {
   "name": "coffee-lounge",
   "cleanUrls": true,
-  "headers": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "public": true,
+  "rewrites": [
     {
       "source": "/favicon.ico",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=14400, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
-      ]
+      "destination": "/favicon.ico"
     }
   ]
 }
