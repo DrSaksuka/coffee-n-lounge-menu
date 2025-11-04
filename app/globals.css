@@ -1,9 +1,16 @@
-/* app/globals.css (Bu, projenin orijinal v4 yapılandırmasıdır) */
+/* app/globals.css
+   Site geneli arka plan ve metin renkleri için temel değişkenler.
+   Burada gri arka plan ve bej (beige) metin rengi ayarlanmıştır.
+   İsterseniz hex değerlerini değiştirerek tonları kolayca ayarlayabilirsiniz.
+*/
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Varsayılan (light / normal) görünüm için renkler */
+  --background: #2f2f2f;
+  /* orta koyu gri */
+  --foreground: #E6D8B7;
+  /* sıcak bej */
 }
 
 @theme inline {
@@ -14,9 +21,11 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
+  /* Karanlık mod tercih edenlerde biraz daha koyu arka plan, açık bej metin */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #232323;
+    --foreground: #F5EBD7;
   }
 }
 

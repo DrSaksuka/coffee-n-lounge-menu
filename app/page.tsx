@@ -21,18 +21,18 @@ export default function Home() {
 
   return (
     // Ana arka plan (bg-gray-900) davetiye ile uyumlu, kalabilir
-    <main className="min-h-screen bg-gray-900 text-white p-4 py-12 md:p-12 flex flex-col items-center">
+  <main className="min-h-screen bg-site-gray text-site-beige p-4 py-12 md:p-12 flex flex-col items-center">
 
       <header className="text-center mb-8">
         {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 (Daha yumuşak, bej-altın) */}
         <h1 className="text-5xl font-bold text-amber-300 mb-2">
           Coffee!N Launge
         </h1>
-        <p className="text-xl text-gray-300">Menü</p>
+  <p className="text-xl text-site-beige">Menü</p>
       </header>
 
       {/* Ana kutu (bg-gray-800) uyumlu, kalabilir */}
-      <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-2xl p-6 md:p-8">
+  <div className="w-full max-w-4xl bg-site-gray-dark rounded-lg shadow-2xl p-6 md:p-8">
 
         {/* --- BÖLİM 1: KATEGORİ LİSTESİ --- */}
         {selectedCategory === null && (
@@ -52,7 +52,7 @@ export default function Home() {
                     key={category.categoryName}
                     onClick={() => setSelectedCategory(category.categoryName)}
                     // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
-                    className="bg-gray-700 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="bg-site-gray rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500"
                   >
                     <div className="relative w-full h-40">
                       <Image
@@ -66,7 +66,7 @@ export default function Home() {
 
                     <div className="p-4">
                       {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
-                      <h3 className="text-lg font-semibold text-center text-gray-100 group-hover:text-amber-300">
+                      <h3 className="text-lg font-semibold text-center text-site-beige group-hover:text-amber-300">
                         {category.categoryName}
                       </h3>
                     </div>
@@ -77,10 +77,10 @@ export default function Home() {
                     key={category.categoryName}
                     onClick={() => setSelectedCategory(category.categoryName)}
                     // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
-                    className="bg-gray-700 rounded-lg shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500 flex items-center justify-center p-4 h-full min-h-[14rem]"
+                    className="bg-site-gray rounded-lg shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500 flex items-center justify-center p-4 h-full min-h-[14rem]"
                   >
                     {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
-                    <h3 className="text-lg font-semibold text-center text-gray-100 group-hover:text-amber-300">
+                    <h3 className="text-lg font-semibold text-center text-site-beige group-hover:text-amber-300">
                       {category.categoryName}
                     </h3>
                   </button>
@@ -102,14 +102,14 @@ export default function Home() {
             </button>
 
             {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 */}
-            <h2 className="text-3xl font-bold text-amber-400 mb-6 border-b border-gray-700 pb-3">
+            <h2 className="text-3xl font-bold text-amber-400 mb-6 border-b border-site-gray-dark pb-3">
               {categoryDetails.categoryName}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
               {categoryDetails.items.map((item) => (
-                <div key={item.name} className="bg-gray-700 p-3 rounded-md">
-                  <h3 className="text-lg font-medium text-gray-100">
+                <div key={item.name} className="bg-site-gray p-3 rounded-md">
+                  <h3 className="text-lg font-medium text-site-beige">
                     {item.name}
                   </h3>
                 </div>

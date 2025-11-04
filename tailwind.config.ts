@@ -12,7 +12,12 @@ const config: Config = {
     ],
     theme: {
         extend: {
-            // (İleride özel renkler eklemek istersek burayı kullanacağız)
+            // Özel site renkleri: bg-site-gray ve text-site-beige gibi sınıflar kullanabilirsiniz
+            colors: {
+                'site-gray': '#2f2f2f',
+                'site-gray-dark': '#232323',
+                'site-beige': '#E6D8B7',
+            },
         },
     },
     plugins: [],
