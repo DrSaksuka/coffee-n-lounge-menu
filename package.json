@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run generate:favicons && next build",
-    "postbuild": "powershell -Command \"Copy-Item -Path public\\favicon* -Destination out\\ -Recurse -Force\"",
+  "build": "npm run generate:favicons && next build",
     "start": "next start",
     "lint": "eslint",
     "generate:favicons": "node ./scripts/generate-favicons.js ./public/n-logo.png"
