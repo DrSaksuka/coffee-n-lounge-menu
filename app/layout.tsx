@@ -42,6 +42,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <footer className="w-full mt-8 py-6 text-center text-site-beige text-sm">
+          Tasarım sahibi&nbsp;
+          <a
+            href="https://salih-acar-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline font-semibold"
+          >
+            Salih Acar
+          </a>
+        </footer>
       </body>
     </html>
   );
