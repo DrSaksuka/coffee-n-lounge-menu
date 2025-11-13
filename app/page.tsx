@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { menuData } from "@/data/menuData";
 import type { MenuCategory } from "@/data/menuData";
 import Image from "next/image";
@@ -10,6 +10,23 @@ import Image from "next/image";
 export default function Home() {
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Tarayıcı geri butonunu yönet
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedCategory(null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // URL'yi güncelle kategori seçildiğinde
+  useEffect(() => {
+    if (selectedCategory) {
+      window.history.pushState({ category: selectedCategory }, "", "");
+    }
+  }, [selectedCategory]);
 
   const getCategoryDetails = (): MenuCategory | undefined => {
     if (!selectedCategory) return undefined;
