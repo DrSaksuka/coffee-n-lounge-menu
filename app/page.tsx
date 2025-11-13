@@ -22,15 +22,17 @@ export default function Home() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // Kategori seçildiğinde URL'ye state ekle
+  // Kategori seçildiğinde URL'ye state ekle ve sayfanın üstüne kaydır
   const handleCategorySelect = (categoryName: string) => {
     setSelectedCategory(categoryName);
     window.history.pushState({ category: categoryName }, "", "");
+    window.scrollTo(0, 0);
   };
 
   // Kategorilere geri dön
   const handleBackToCategories = () => {
     setSelectedCategory(null);
+    window.scrollTo(0, 0);
     window.history.back();
   };
 
