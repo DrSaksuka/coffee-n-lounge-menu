@@ -93,13 +93,16 @@ export default function Home() {
         {/* --- BÖLÜM 2: ÜRÜN LİSTESİ --- */}
         {selectedCategory !== null && categoryDetails && (
           <div>
-            {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 | hover:text-yellow-300 -> hover:text-amber-200 */}
-            <button
-              onClick={() => setSelectedCategory(null)}
-              className="text-amber-300 hover:text-amber-200 mb-4 font-medium"
-            >
-              &larr; Tüm Kategoriler
-            </button>
+            {/* Geri Dönüş Butonu - Stilize Versiyon */}
+            <div className="flex items-center mb-6">
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 hover:bg-amber-500/40 hover:text-amber-200 transition-all duration-300 font-medium"
+              >
+                <span>←</span>
+                <span>Tüm Kategoriler</span>
+              </button>
+            </div>
 
             {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 */}
             <h2 className="text-3xl font-bold text-amber-400 mb-6 border-b border-site-gray-dark pb-3">
