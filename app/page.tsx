@@ -21,18 +21,18 @@ export default function Home() {
 
   return (
     // Ana arka plan (bg-gray-900) davetiye ile uyumlu, kalabilir
-  <main className="min-h-screen bg-site-gray text-site-beige p-4 py-12 md:p-12 flex flex-col items-center">
+    <main className="min-h-screen bg-site-gray text-site-beige p-4 py-12 md:p-12 flex flex-col items-center">
 
       <header className="text-center mb-8">
         {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 (Daha yumuşak, bej-altın) */}
         <h1 className="text-5xl font-bold text-amber-300 mb-2">
           Coffee!N Launge
         </h1>
-  <p className="text-xl text-site-beige">Menü</p>
+        <p className="text-xl text-site-beige">Menü</p>
       </header>
 
       {/* Ana kutu (bg-gray-800) uyumlu, kalabilir */}
-  <div className="w-full max-w-4xl bg-site-gray-dark rounded-lg shadow-2xl p-6 md:p-8">
+      <div className="w-full max-w-4xl bg-site-gray-dark rounded-lg shadow-2xl p-6 md:p-8">
 
         {/* --- BÖLİM 1: KATEGORİ LİSTESİ --- */}
         {selectedCategory === null && (
@@ -108,10 +108,15 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
               {categoryDetails.items.map((item) => (
-                <div key={item.name} className="bg-site-gray p-3 rounded-md">
+                <div key={item.name} className="bg-site-gray p-3 rounded-md flex justify-between items-center">
                   <h3 className="text-lg font-medium text-site-beige">
                     {item.name}
                   </h3>
+                  {item.price && (
+                    <span className="text-amber-300 font-semibold">
+                      {item.price} ₺
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
