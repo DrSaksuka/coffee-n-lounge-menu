@@ -3,15 +3,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { menuData } from "@/data/menuData";
 import type { MenuCategory } from "@/data/menuData";
 import Image from "next/image";
 
 export default function Home() {
-
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Tarayıcı geri butonunu yönet
+  // Telefon geri butonunu yönet
   useEffect(() => {
     const handlePopState = () => {
       setSelectedCategory(null);
@@ -21,12 +22,17 @@ export default function Home() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // URL'yi güncelle kategori seçildiğinde
-  useEffect(() => {
-    if (selectedCategory) {
-      window.history.pushState({ category: selectedCategory }, "", "");
-    }
-  }, [selectedCategory]);
+  // Kategori seçildiğinde URL'ye state ekle
+  const handleCategorySelect = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+    window.history.pushState({ category: categoryName }, "", "");
+  };
+
+  // Kategorilere geri dön
+  const handleBackToCategories = () => {
+    setSelectedCategory(null);
+    window.history.back();
+  };
 
   const getCategoryDetails = (): MenuCategory | undefined => {
     if (!selectedCategory) return undefined;
@@ -67,7 +73,7 @@ export default function Home() {
                   // Resimli Kart
                   <button
                     key={category.categoryName}
-                    onClick={() => setSelectedCategory(category.categoryName)}
+                    onClick={() => handleCategorySelect(category.categoryName)}
                     // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
                     className="bg-site-gray rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500"
                   >
@@ -92,7 +98,7 @@ export default function Home() {
                   // Resimsiz Kart
                   <button
                     key={category.categoryName}
-                    onClick={() => setSelectedCategory(category.categoryName)}
+                    onClick={() => handleCategorySelect(category.categoryName)}
                     // RENK GÜNCELLEMESİ: hover:shadow-yellow... -> hover:shadow-amber... | focus:ring-yellow... -> focus:ring-amber...
                     className="bg-site-gray rounded-lg shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500 flex items-center justify-center p-4 h-full min-h-[14rem]"
                   >
@@ -113,7 +119,7 @@ export default function Home() {
             {/* Geri Dönüş Butonu - Stilize Versiyon */}
             <div className="flex items-center mb-6">
               <button
-                onClick={() => setSelectedCategory(null)}
+                onClick={handleBackToCategories}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-yellow-600/50"
               >
                 <span className="text-lg">⬅️</span>
