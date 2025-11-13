@@ -97,9 +97,9 @@ export default function Home() {
             <div className="flex items-center mb-6">
               <button
                 onClick={() => setSelectedCategory(null)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 hover:bg-amber-500/40 hover:text-amber-200 transition-all duration-300 font-medium"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-yellow-600/50"
               >
-                <span>←</span>
+                <span className="text-lg">⬅️</span>
                 <span>Tüm Kategoriler</span>
               </button>
             </div>
