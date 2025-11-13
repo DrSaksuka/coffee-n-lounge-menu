@@ -194,9 +194,9 @@ export const menuData: MenuCategory[] = [
         categoryName: "Ekstralar",
         imagePath: "/categories/ekstralar.jpg",
         items: [
-            { name: "Karışık Kuruyemiş" },
-            { name: "Meyve Tabağı (Mevsim Meyveleri)" },
-            { name: "Dondurma (3Top)" },
+            { name: "Karışık Kuruyemiş", price: 100 },
+            { name: "Meyve Tabağı (Mevsim Meyveleri)", price: 150 },
+            { name: "Dondurma (3Top)", price: 75 },
         ],
     },
     {
