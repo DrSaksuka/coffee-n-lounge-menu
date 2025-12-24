@@ -251,10 +251,10 @@ export const menuData: MenuCategory[] = [
         items: [
             { name: "Nargile Lüle", price: 200 },
             { name: "Nargile + Meyve Suyu", price: 400 },
-            { name: "Nargile + Pasta + Çay", price: 550 },
-            { name: "Nargile + Pasta + T. Kahvesi", price: 600 },
-            { name: "Nargile + Nargile", price: 525 },
-            { name: "Nargile + M. Tabağı + Kuruyemiş", price: 650 },
+            { name: "Nargile + Pasta + Çay", price: 500 },
+            { name: "Nargile + Pasta + T. Kahvesi", price: 550 },
+            { name: "Nargile + Nargile", price: 550 },
+            { name: "Nargile + M. Tabağı + Kuruyemiş", price: 600 },
         ],
     },
 ];
