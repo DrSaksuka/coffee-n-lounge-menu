@@ -157,7 +157,7 @@ export const menuData: MenuCategory[] = [
         categoryName: "Soğuk İçecekler",
         imagePath: "/categories/soguk-icecekler.jpg",
         items: [
-            { name: "Su", price: 70 },
+            { name: "Su", price: 30 },
             { name: "Coca Cola", price: 125 },
             { name: "Sprite", price: 125 },
             { name: "Fanta", price: 125 },
