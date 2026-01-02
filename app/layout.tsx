@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Courgette } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const courgette = Courgette({
+  weight: "400",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-courgette",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +35,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${courgette.variable} ${courgette.className} antialiased`}
       >
         {children}
         <footer className="w-full mt-8 py-6 text-center text-site-beige text-sm">
@@ -48,7 +44,7 @@ export default function RootLayout({
             href="https://salih-acar-portfolio.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline font-semibold"
+            className="underline "
           >
             Salih Acar
           </a>

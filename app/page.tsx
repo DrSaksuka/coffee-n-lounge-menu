@@ -3,13 +3,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+
 import { menuData } from "@/data/menuData";
 import type { MenuCategory } from "@/data/menuData";
 import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Telefon geri butonunu yönet
@@ -50,7 +49,7 @@ export default function Home() {
 
       <header className="text-center mb-8">
         {/* RENK GÜNCELLEMESİ: text-yellow-400 -> text-amber-300 (Daha yumuşak, bej-altın) */}
-        <h1 className="text-5xl font-bold text-amber-300 mb-2">
+        <h1 className="text-5xl  text-amber-300 mb-2">
           Coffee!N Launge
         </h1>
         <p className="text-xl text-site-beige">Menü</p>
@@ -63,7 +62,7 @@ export default function Home() {
         {selectedCategory === null && (
           <div>
             {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 (Daha sıcak bir altın) */}
-            <h2 className="text-2xl font-semibold text-center text-amber-400 mb-6">
+            <h2 className="text-2xl  text-center text-amber-400 mb-6">
               Kategoriler
             </h2>
 
@@ -91,7 +90,7 @@ export default function Home() {
 
                     <div className="p-4">
                       {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
-                      <h3 className="text-lg font-semibold text-center text-site-beige group-hover:text-amber-300">
+                      <h3 className="text-lg  text-center text-site-beige group-hover:text-amber-300">
                         {category.categoryName}
                       </h3>
                     </div>
@@ -105,7 +104,7 @@ export default function Home() {
                     className="bg-site-gray rounded-lg shadow-lg transition-all duration-300 hover:shadow-amber-500/30 hover:scale-105 group focus:outline-none focus:ring-2 focus:ring-amber-500 flex items-center justify-center p-4 h-full min-h-[14rem]"
                   >
                     {/* RENK GÜNCELLEMESİ: group-hover:text-yellow-400 -> group-hover:text-amber-300 */}
-                    <h3 className="text-lg font-semibold text-center text-site-beige group-hover:text-amber-300">
+                    <h3 className="text-lg  text-center text-site-beige group-hover:text-amber-300">
                       {category.categoryName}
                     </h3>
                   </button>
@@ -122,26 +121,28 @@ export default function Home() {
             <div className="flex items-center mb-6">
               <button
                 onClick={handleBackToCategories}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-yellow-600/50"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 transition-all duration-300  shadow-lg hover:shadow-yellow-600/50"
               >
-                <span className="text-lg">⬅️</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
                 <span>Tüm Kategoriler</span>
               </button>
             </div>
 
             {/* RENK GÜNCELLEMESİ: text-yellow-500 -> text-amber-400 */}
-            <h2 className="text-3xl font-bold text-amber-400 mb-6 border-b border-site-gray-dark pb-3">
+            <h2 className="text-3xl  text-amber-400 mb-6 border-b border-site-gray-dark pb-3">
               {categoryDetails.categoryName}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
               {categoryDetails.items.map((item) => (
                 <div key={item.name} className="bg-site-gray p-3 rounded-md flex justify-between items-center">
-                  <h3 className="text-lg font-medium text-site-beige">
+                  <h3 className="text-lg  text-site-beige">
                     {item.name}
                   </h3>
                   {item.price && (
-                    <span className="text-amber-300 font-semibold">
+                    <span className="text-amber-300 ">
                       {item.price} ₺
                     </span>
                   )}
